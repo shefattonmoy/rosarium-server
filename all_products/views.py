@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from . import models
 from . import serializers
 
@@ -18,9 +19,11 @@ class CategoryViewset(viewsets.ModelViewSet):
     serializer_class = serializers.CategorySerializer
     
 class ReceivingTimeViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = models.ReceivingTime.objects.all()
     serializer_class = serializers.ReceivingTimeSerializer
     
 class ReviewViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
