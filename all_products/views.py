@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, pagination, filters
+from rest_framework.permissions import  IsAuthenticatedOrReadOnly
 from . import models
 from . import serializers
 
@@ -33,11 +34,13 @@ class ReceivingTimeForSpecificProduct(filters.BaseFilterBackend):
         return query_set
     
 class ReceivingTimeViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = models.ReceivingTime.objects.all()
     serializer_class = serializers.ReceivingTimeSerializer
     filter_backends = [ReceivingTimeForSpecificProduct]
     
 class ReviewViewset(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
     
