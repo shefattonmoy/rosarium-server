@@ -29,6 +29,7 @@ SECRET_KEY = 'django-insecure-^%b5z%hs(j)m=w842@0tp#usyd5f*(i=gl$*80x#cke3s5(sox
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://rosarium-server.onrender.com', 'https://*.127.0.0.1']
 
 
 # Application definition
