@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, pagination, filters
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from . import models
 from . import serializers
 
@@ -18,8 +17,6 @@ class AllProductViewset(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['username', 'email']
     pagination_class = AllProductPagination
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
     
 class ColorViewset(viewsets.ModelViewSet):
     queryset = models.Color.objects.all()

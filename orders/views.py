@@ -2,15 +2,11 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 from . import models
 from . import serializers
 
 # Create your views here.
 class OrderViewset(viewsets.ModelViewSet):
-    authentication_classes = [TokenAuthentication] 
-    permission_classes = [IsAuthenticated]
     queryset = models.Order.objects.all()
     serializer_class = serializers.OrderSerializer
     
