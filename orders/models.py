@@ -6,6 +6,7 @@ from all_products.models import AllProduct, ReceivingTime
 
 ORDER_STATUS = [
     ('Pending', 'Pending'),
+    ('Confirmed', 'Confirmed'),
     ('Processing', 'Processing'),
     ('Completed', 'Completed'),
 ]

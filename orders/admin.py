@@ -15,8 +15,8 @@ class OrderAdmin(admin.ModelAdmin):
     
     def save_model(self, request, obj, form, change):
         obj.save()
-        if obj.order_status == "Pending" and obj.order_types == "Home Delivery":
-            email_subject = "Your home delivery order is received."
+        if obj.order_status == "Confirmed" and obj.order_types == "Home Delivery":
+            email_subject = "Your home delivery order is confirmed."
             email_body = render_to_string('admin_email.html', {'customer' : obj.customer.user, 'all_products' : obj.all_products})
             print(email_body)
             email = EmailMultiAlternatives(email_subject , '', to=[obj.customer.user.email])
