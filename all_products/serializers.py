@@ -26,6 +26,10 @@ class ReceivingTimeSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class ReviewSerializer(serializers.ModelSerializer):
+    reviewer_name = serializers.SerializerMethodField()
     class Meta:
         model = models.Review
         fields = '__all__'
+        
+    def get_reviewer_name(self, obj):
+        return obj.reviewer.user.first_name
