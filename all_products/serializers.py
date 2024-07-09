@@ -27,9 +27,15 @@ class ReceivingTimeSerializer(serializers.ModelSerializer):
         
 class ReviewSerializer(serializers.ModelSerializer):
     reviewer_name = serializers.SerializerMethodField()
+    reviewer_image = serializers.SerializerMethodField()
     class Meta:
         model = models.Review
         fields = '__all__'
         
     def get_reviewer_name(self, obj):
         return obj.reviewer.user.first_name
+    
+    def get_reviewer_image(self, obj):
+        if obj.reviewer.image:
+            return obj.reviewer.image.url
+        return None
