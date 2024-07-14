@@ -65,6 +65,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5501",
+    "https://rosarium-client-by-shefat.netlify.app",
 ]
 
 CORS_ALLOW_METHODS = (
